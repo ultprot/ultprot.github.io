@@ -8,7 +8,7 @@ categories:
 패스트캠퍼스의 강의는 화면을 분할해서 사용하면 영상의 크기가 작다. 그래서 매번 크롬 개발자 도구를 열어서 클래스가 `fco-clip-content__viewer`인 엘리먼트에 style을 추가해서 썼다.
 
 
-![tagAdded](/images/2020-01-25-Resize-Fastcampus-Video/tag_added.jpg)
+![tagAdded](/images/2020-01-25-Resize-Fastcampus-Video/tag_added.jpg){: .align-center}
 
 
 그러다가 귀찮아서 간단한 크롬 확장 기능을 만들었다.
