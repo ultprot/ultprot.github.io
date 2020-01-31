@@ -24,17 +24,17 @@ layout: default
       <div class="page-content">
         <div class="e-content">
           {{ content }}
+          <script src="https://utteranc.es/client.js"
+              repo="ultprot/comments"
+              issue-term="pathname"
+              label="Comment"
+              theme="github-dark"
+              crossorigin="anonymous"
+              async>
+          </script>
         </div>
 
         {% include page-pagination.html %}
-        <script src="https://utteranc.es/client.js"
-            repo="ultprot/comments"
-            issue-term="pathname"
-            label="Comment"
-            theme="github-dark"
-            crossorigin="anonymous"
-            async>
-        </script>
       </div>
     </div>
   </article>
