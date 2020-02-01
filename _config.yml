@@ -88,7 +88,7 @@ defaults:
 # Site Author
 author:
   name: ultprot
-  picture: images/up.svg
+  picture: /images/up.svg
   email: ultprot@gmail.com
   twitter:
   links:
