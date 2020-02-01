@@ -20,7 +20,7 @@ title: "이것은 블로그입니다."
 description: "UltProt."
 baseurl: # the subpath of your site, e.g. "/blog"
 url: # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-logo: # path of site logo, e.g. "/images/logo.png"
+logo: "/images/up.svg"
 date_format: "%B %-d, %Y"
 read_time: # reading time estimates, e.g. true
 words_per_minute: # 200
