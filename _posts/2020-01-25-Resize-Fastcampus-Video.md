@@ -1,6 +1,5 @@
 ---
-title:
-	- "Resize Fastcampus Video"
+title: "Resize Fastcampus Video"
 categories:
 	- Web
 ---
