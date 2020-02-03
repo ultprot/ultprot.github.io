@@ -47,23 +47,23 @@ ko: &DEFAULT_KO
   by: "by"
   min_read: "min read"
   read_more: "Read more&hellip;"
-  categories: "Categories"
-  tags: "Tags"
+  categories: "카테고리"
+  tags: "태그"
   pages_categorized: "Pages filed under"
   pages_tagged: "Pages tagged"
-  table_of_contents: "Table of Contents"
-  results_found: "Result(s) found"
-  share: "Share"
+  table_of_contents: "목차"
+  results_found: "개의 결과"
+  share: "공유하기"
   tweet: "Tweet"
-  next: "Next"
-  previous: "Previous"
-  newer: "Newer"
-  older: "Older"
-  back_to_top: "Back to Top"
-  search_placeholder_text: "Enter your search term..."
+  next: "다음"
+  previous: "이전"
+  newer: "새로운"
+  older: "오래된"
+  back_to_top: "맨 위로"
+  search_placeholder_text: "검색어를 입력하세요..."
   powered_by: "Powered by"
 ko-KR:
-  <<: *DEFAULT_EN
+  <<: *DEFAULT_KO
 
 
 # German
