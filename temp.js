@@ -1,23 +1,29 @@
 class Problem{
-    constructor(a, b, c){
-        this.a = BigInt(a);
-        this.b = Number(b);
-        this.c = BigInt(c);
+    constructor(numbers, target){
+        this.numbers = numbers;
+        this.target = target;
+        this.last = numbers.length;
+        this.answer = 0;
     }
 
-    getAnswer(cb){
-        let temp = BigInt(0);
-        if(cb == 1){
-            temp = this.a;
-        }else{
-            temp = this.getAnswer(parseInt(cb/2));
-            temp *= temp;
-            temp %= this.c;
-            if(cb%2 !== 0){
-                temp *= (this.a % this.c);
+    newRound(round, value){
+        if(round === this.last){
+            if(value === this.target){
+                this.answer++;
             }
+        }else{
+            const current = this.numbers[round];
+            const plus = value+current;
+            const minus = value-current;
+            round++;
+            this.newRound(round, plus);
+            this.newRound(round, minus);
         }
-        return temp % this.c;
+    }
+
+    getAnswer(){
+        this.newRound(0,0);
+        return this.answer;
     }
 }
 
