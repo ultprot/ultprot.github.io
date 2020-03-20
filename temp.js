@@ -1,29 +1,25 @@
 class Problem{
-    constructor(numbers, target){
+    constructor(numbers){
         this.numbers = numbers;
-        this.target = target;
-        this.last = numbers.length;
-        this.answer = 0;
+        this.numbers.sort((a,b) => {
+            return a - b;
+        });
     }
 
-    newRound(round, value){
-        if(round === this.last){
-            if(value === this.target){
-                this.answer++;
+    find(target){
+        let l = 0;
+        let r = this.numbers.length - 1
+        while(l<=r){
+            let m = parseInt((l+r)/2)
+            if(target === this.numbers[m]){
+                return true;
+            }else if(target<this.numbers[m]){
+                r = m - 1
+            }else{
+                l = m + 1
             }
-        }else{
-            const current = this.numbers[round];
-            const plus = value+current;
-            const minus = value-current;
-            round++;
-            this.newRound(round, plus);
-            this.newRound(round, minus);
         }
-    }
-
-    getAnswer(){
-        this.newRound(0,0);
-        return this.answer;
+        return false;
     }
 }
 
@@ -33,14 +29,21 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-let a, b, c;
+const lines = [];
 
 rl.on("line", line=>{
-    const inputs = line.split(' ');
-    a = BigInt(inputs[0]);
-    b = Number(inputs[1]);
-    c = BigInt(inputs[2]);
+    lines.push(line);
 }).on("close", ()=>{
-    const problem = new Problem(a, b, c);
-    console.log(problem.getAnswer(b).toString(10));
+    const numbers = lines[1].split(' ').map(x => Number(x));
+    const targets = lines[3].split(' ').map(x => Number(x));
+
+    const problem = new Problem(numbers);
+
+    targets.map(x=>{
+        if(problem.find(x) === true){
+            console.log(1);
+        }else{
+            console.log(0);
+        }
+    })
 });
