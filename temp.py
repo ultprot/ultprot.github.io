@@ -1,23 +1,40 @@
-from queue import PriorityQueue
-class Person:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
-    
+class Problem:
+    def __init__(self, distance, rocks, n):
+        self.distance = distance
+        self.rocks = rocks
+        self.rocks.sort()
+        self.n = n
 
-person1 = Person("a", 10)
-person2 = Person("b", 20)
-person3 = Person("c", 30)
-person4 = Person("d", 40)
-person5 = Person("e", 50)
+    def isSatisfied(self, key):
+        prev = 0
+        count = 0
+        for rock in self.rocks:
+            if rock - prev < key:
+                count+=1
+            else:
+                prev = rock
+        if self.distance - prev < key:
+            count+=1
+        if count > self.n:
+            return False
+        else:
+            return True
 
-pq = PriorityQueue()
-
-pq.put((5, person1))
-pq.put((3, person3))
-pq.put((1, person5))
-pq.put((4, person2))
-pq.put((2, person4))
-
-while not pq.empty():
-    print(pq.get()[1].name)
+    def binarySearch(self):
+        l = 0
+        r = self.distance
+        answer = 0
+        while l<=r:
+            mid = (l+r)//2
+            if self.isSatisfied(mid):
+                answer = mid
+                l = mid+1
+            else:
+                r = mid-1
+        return answer
+        
+def solution(distance, rocks, n):
+    answer = 0
+    problem = Problem(distance, rocks, n)
+    answer = problem.binarySearch()
+    return answer
