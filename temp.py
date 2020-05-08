@@ -1,29 +1,25 @@
-from sys import stdin
-
 class Problem:
-    def __init__(self):
-        self.n = stdin.readline()
-        self.given = stdin.readline().rstrip().split()
-        self.m = stdin.readline()
-        self.when = stdin.readline().rstrip().split()
-        self.mp = {}
-        for value in self.given:
-            if value in self.mp:
-                self.mp[value] = self.mp[value]+1
-            else:
-                self.mp[value] = 1
-    
-    def getAnswer(self, key):
-        return self.mp[key]
+    def __init__(self, array, commands):
+        self.array = array
+        self.commands = commands
 
-    def printAnswers(self):
-        answer = 0
-        for value in self.when:
-            if value in self.mp:
-                answer = self.mp[value]
-            else:
-                answer = 0
-            print(answer, end = ' ')
+    def getAnswer(self, command):
+        start = command[0] - 1
+        end = command[1]
+        target = command[2] - 1
+        newArray = self.array[start:end]
+        newArray.sort()
+        return newArray[target]
 
-problem = Problem()
-problem.printAnswers()
+    def getAnswers(self):
+        answers = [0 for _ in range(len(self.commands))]
+        for i, command in enumerate(self.commands):
+            answers[i] = self.getAnswer(command)
+        return answers
+
+
+def solution(array, commands):
+    answer = []
+    problem = Problem(array, commands)
+    answer = problem.getAnswers()
+    return answer
