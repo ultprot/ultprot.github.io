@@ -1,25 +1,33 @@
 class Problem:
-    def __init__(self, array, commands):
-        self.array = array
-        self.commands = commands
+    def __init__(self, n, m):
+        self.n = n
+        self.m = m
+        self.answer = [0 for _ in range(m)]
+        self.used = [False for _ in range(n)]
 
-    def getAnswer(self, command):
-        start = command[0] - 1
-        end = command[1]
-        target = command[2] - 1
-        newArray = self.array[start:end]
-        newArray.sort()
-        return newArray[target]
+    def printAnswer(self):
+        for number in self.answer:
+            print(number,end=' ')
+        print()
 
-    def getAnswers(self):
-        answers = [0 for _ in range(len(self.commands))]
-        for i, command in enumerate(self.commands):
-            answers[i] = self.getAnswer(command)
-        return answers
+    def makeAnswer(self, index):
+        if index == len(self.answer):
+            self.printAnswer()
+            return
+        for i in range(1, n+1):
+            if index == 0 or (self.used[i-1] == False and self.answer[index-1]<i):
+                self.answer[index] = i
+                self.used[i-1] = True
+                self.makeAnswer(index+1)
+                self.used[i-1] = False
+                self.answer[index] = 0
+        return
+
+    def printAnswers(self):
+        self.makeAnswer(0)
+        return
 
 
-def solution(array, commands):
-    answer = []
-    problem = Problem(array, commands)
-    answer = problem.getAnswers()
-    return answer
+n, m = map(int, input().split())
+problem = Problem(n, m)
+problem.printAnswers()
